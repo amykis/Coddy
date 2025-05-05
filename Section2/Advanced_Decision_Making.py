@@ -1,24 +1,26 @@
 '''
-You are given a list of product names and a dictionary of product quantities for a grocery store.
-Write a function named check_inventory that takes two parameters: products (a list) and quantities (a dictionary).
-The function should perform the following checks:
+Create a function named compare_strings that takes two strings, str1 and str2, as arguments.
+The function should perform the following operations:
 
-Check if 'Apples' is in the product list.
-Check if 'Oranges' is not in the product list.
-Check if 'Bananas' is in the quantities dictionary.
-Check if 'Grapes' is not in the quantities dictionary.
-For each check, print an appropriate message as shown in the test cases.
+Check if str1 is a substring of str2.
+Check if str2 starts with str1.
+Check if str2 ends with str1.
+Check if str1 and str2 are equal (case-insensitive).
+Return a dictionary containing the results of these operations, with the keys "is_substring", "starts_with", "ends_with", and "is_equal".
 '''
 
-def check_inventory(products, quantities):
+def compare_strings(str1, str2):
     # Write code here
-    print("Apples are in stock.") if "Apples" in products else None
-    print("Oranges are not in stock.") if "Oranges" not in products else None
-    print("Bananas quantity is tracked.") if "Bananas" in quantities else None
-    print("Grapes quantity is not tracked.") if "Grapes" not in quantities else None
+    dictionary = {}
+    dictionary["is_substring"] = True if str1 in str2 else False
+    dictionary["starts_with"] = True if str2.startswith(str1) else False
+    dictionary["ends_with"] = True if str2.endswith(str1) else False
+    dictionary["is_equal"] = True if str1.lower() == str2.lower() else False
+
+    return dictionary
 
 
-product = ["Apples", "Bananas", "Milk", "Bread", "Eggs"]
-quantities = {"Bananas": 30, "Milk": 10, "Bread": 20}
+str1 = 'hello'
+str2 = 'Hello'
 
-check_inventory(product, quantities)
+print(compare_strings(str1, str2))
