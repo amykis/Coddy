@@ -1,19 +1,21 @@
 '''
-Create a function named manage_list that takes three arguments: list1 (a list of integers),
-element_to_append, and index_to_remove. The function should perform the following operations:
+Write a program that performs the following tasks:
 
-Append element_to_append to the end of list1.
-Attempt to remove the element at index index_to_remove from list1. If the index is out of range, do nothing.
-Check if list1 has more than 3 elements. If it does, return the string "The list has more than 3 elements".
-Otherwise, return the string "The list has 3 or fewer elements".
+Create a set called numbers containing the values 10, 20, 30, 40, 50.
+Use the discard() method to remove 35 from the set.
+Use the pop() method to remove an arbitrary element and store it in a variable called popped_element.
+Use the clear() method to empty the set.
+Print the following:
+The set after using discard().
+The value of popped_element.
+The set after using clear().
 '''
 
-def manage_list(list1, element_to_append, index_to_remove):
-    # Write code here
-    list1.append(element_to_append)
-    if index_to_remove < len(list1):
-        list1.remove(list1[index_to_remove])
-    if len(list1) > 3:
-        return "The list has more than 3 elements"
-    else:
-        return "The list has 3 or fewer elements"
+# Write code here
+numbers = {10, 20, 30, 40, 50}
+numbers.discard(35)
+print(numbers)
+popped_element = numbers.pop()
+print(popped_element)
+numbers.clear()
+print(numbers)
