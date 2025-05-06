@@ -1,19 +1,19 @@
 '''
-Create a function named manage_set that takes three arguments: set1 (a set),
-element_to_add, and element_to_remove. The function should perform the following operations:
+Create a function named manage_list that takes three arguments: list1 (a list of integers),
+element_to_append, and index_to_remove. The function should perform the following operations:
 
-Add element_to_add to set1.
-Attempt to remove element_to_remove from set1. If the element is not in the set, do nothing.
-Check if the number 5 is in set1. If it is, return the string "5 is in the set".
-Otherwise, return the string "5 is not in the set".
+Append element_to_append to the end of list1.
+Attempt to remove the element at index index_to_remove from list1. If the index is out of range, do nothing.
+Check if list1 has more than 3 elements. If it does, return the string "The list has more than 3 elements".
+Otherwise, return the string "The list has 3 or fewer elements".
 '''
 
-def manage_set(set1, element_to_add, element_to_remove):
+def manage_list(list1, element_to_append, index_to_remove):
     # Write code here
-    set1.add(element_to_add)
-    if element_to_remove in set1:
-        set1.remove(element_to_remove)
-    if 5 in set1:
-        return "5 is in the set"
+    list1.append(element_to_append)
+    if index_to_remove < len(list1):
+        list1.remove(list1[index_to_remove])
+    if len(list1) > 3:
+        return "The list has more than 3 elements"
     else:
-        return "5 is not in the set"
+        return "The list has 3 or fewer elements"
