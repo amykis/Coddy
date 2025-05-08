@@ -10,27 +10,23 @@ This project demonstrates the practical use of dictionaries for structured data,
 and advanced decision-making for efficient data management. It’s a practical way to apply Python concepts in a real-world scenario.
 
 
-Challenge task5
+Challenge task6
 
 Easy
-Create a function named calculate_average_grade that takes one argument: name (string). The function should:
+Create a function named list_students_by_course that takes one argument: course (string). The function should:
 
-Check if the student name exists in the student_records dictionary.
-If it does not exist, print "Student '<name>' not found." and return None.
-If the name exists, calculate the average of the grades in the student's grades set.
-If the grades set is empty, return 0.
-Otherwise, calculate and return the average grade as a float.
+Iterate through the student_records dictionary and find all students enrolled in the specified course.
+Return a list of names of students who are enrolled in the course.
+If no students are enrolled in the course, return an empty list.
 Add (replace) the following block of code at the bottom of your code:
 
 add_student("Alice", 20, ["Math", "Physics"])
-add_student("Bob", 22, ["Biology", "Chemistry"])
-add_grade("Alice", 90)
-add_grade("Alice", 85)
-add_grade("Bob", 75)
-print(calculate_average_grade("Alice"))  # Should return 87.5
-print(calculate_average_grade("Bob"))  # Should return 75.0
-print(calculate_average_grade("Charlie"))  # Non-existent student, should print message and return None
-print(calculate_average_grade("Alice"))  # Should return 87.5 again
+add_student("Bob", 22, ["Math", "Biology"])
+add_student("Diana", 23, ["Chemistry", "Physics"])
+print(list_students_by_course("Math"))  # Should return ["Alice", "Bob"]
+print(list_students_by_course("Physics"))  # Should return ["Alice", "Diana"]
+print(list_students_by_course("Biology"))  # Should return ["Bob"]
+print(list_students_by_course("History"))  # Should return an empty list
 '''
 
 
@@ -68,29 +64,31 @@ def calculate_average_grade(name):
         return 0
     else:
         average_grade = sum(student_records[name]["grades"]) / len(student_records[name]["grades"])
-        return  average_grade
+        return average_grade
 
+
+def list_students_by_course(course):
+    list_students = []
+    for name in student_records:
+        if course in student_records[name]["courses"]:
+            list_students.append(name)
+    return list_students
 
 student_records = {}
 add_student("Alice", 20, ["Math", "Physics"])
-add_student("Bob", 22, ["Biology", "Chemistry"])
-add_grade("Alice", 90)
-add_grade("Alice", 85)
-add_grade("Bob", 75)
-print(calculate_average_grade("Alice"))  # Should return 87.5
-print(calculate_average_grade("Bob"))  # Should return 75.0
-print(calculate_average_grade("Charlie"))  # Non-existent student, should print message and return None
-print(calculate_average_grade("Alice"))  # Should return 87.5 again
+add_student("Bob", 22, ["Math", "Biology"])
+add_student("Diana", 23, ["Chemistry", "Physics"])
+print(list_students_by_course("Math"))  # Should return ["Alice", "Bob"]
+print(list_students_by_course("Physics"))  # Should return ["Alice", "Diana"]
+print(list_students_by_course("Biology"))  # Should return ["Bob"]
+print(list_students_by_course("History"))  # Should return an empty list
 
 '''
 Student 'Alice' added successfully.
 Student 'Bob' added successfully.
-Grade 90 added for student 'Alice'.
-Grade 85 added for student 'Alice'.
-Grade 75 added for student 'Bob'.
-87.5
-75.0
-Student 'Charlie' not found.
-None
-87.5
+Student 'Diana' added successfully.
+['Alice', 'Bob']
+['Alice', 'Diana']
+['Bob']
+[]
 '''
