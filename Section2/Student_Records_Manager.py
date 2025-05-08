@@ -10,23 +10,30 @@ This project demonstrates the practical use of dictionaries for structured data,
 and advanced decision-making for efficient data management. It’s a practical way to apply Python concepts in a real-world scenario.
 
 
-Challenge task6
+Challenge task7
 
 Easy
-Create a function named list_students_by_course that takes one argument: course (string). The function should:
+Create a function named filter_top_students that takes one argument: threshold (float). The function should:
 
-Iterate through the student_records dictionary and find all students enrolled in the specified course.
-Return a list of names of students who are enrolled in the course.
-If no students are enrolled in the course, return an empty list.
+Iterate through the student_records dictionary and find all students whose average grade is greater than the specified threshold.
+Use the calculate_average_grade function to get each student's average grade.
+Return a list of names of the top students.
+If no students meet the criteria, return an empty list.
 Add (replace) the following block of code at the bottom of your code:
 
 add_student("Alice", 20, ["Math", "Physics"])
 add_student("Bob", 22, ["Math", "Biology"])
 add_student("Diana", 23, ["Chemistry", "Physics"])
-print(list_students_by_course("Math"))  # Should return ["Alice", "Bob"]
-print(list_students_by_course("Physics"))  # Should return ["Alice", "Diana"]
-print(list_students_by_course("Biology"))  # Should return ["Bob"]
-print(list_students_by_course("History"))  # Should return an empty list
+add_grade("Alice", 90)
+add_grade("Alice", 85)
+add_grade("Bob", 75)
+add_grade("Diana", 95)
+print(filter_top_students(80))  # Should return ["Alice", "Diana"]
+print(filter_top_students(90))  # Should return ["Diana"]
+print(filter_top_students(100))  # Should return an empty list
+
+Take a moment to reflect on how you’ve combined dictionaries, sets,
+and decision-making to create a fully functional program. Great job! 🚀
 '''
 
 
@@ -74,21 +81,36 @@ def list_students_by_course(course):
             list_students.append(name)
     return list_students
 
+
+def filter_top_students(threshold):
+    top_students = []
+    for name in student_records:
+        if calculate_average_grade(name) > threshold:
+            top_students.append(name)
+    return top_students
+
+
 student_records = {}
 add_student("Alice", 20, ["Math", "Physics"])
 add_student("Bob", 22, ["Math", "Biology"])
 add_student("Diana", 23, ["Chemistry", "Physics"])
-print(list_students_by_course("Math"))  # Should return ["Alice", "Bob"]
-print(list_students_by_course("Physics"))  # Should return ["Alice", "Diana"]
-print(list_students_by_course("Biology"))  # Should return ["Bob"]
-print(list_students_by_course("History"))  # Should return an empty list
+add_grade("Alice", 90)
+add_grade("Alice", 85)
+add_grade("Bob", 75)
+add_grade("Diana", 95)
+print(filter_top_students(80))  # Should return ["Alice", "Diana"]
+print(filter_top_students(90))  # Should return ["Diana"]
+print(filter_top_students(100))  # Should return an empty list
 
 '''
 Student 'Alice' added successfully.
 Student 'Bob' added successfully.
 Student 'Diana' added successfully.
-['Alice', 'Bob']
+Grade 90 added for student 'Alice'.
+Grade 85 added for student 'Alice'.
+Grade 75 added for student 'Bob'.
+Grade 95 added for student 'Diana'.
 ['Alice', 'Diana']
-['Bob']
+['Diana']
 []
 '''
