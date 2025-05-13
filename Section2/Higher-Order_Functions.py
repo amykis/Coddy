@@ -1,20 +1,19 @@
 """
-Challenge task1
+Challenge task2
 
-Easy
-Create a function named convert_to_uppercase that takes a list of strings strings as an argument.
-The function should use the map() function along with a lambda function to convert each string in the list to uppercase.
-The function should return a list containing the uppercase strings.
+Create a function named calculate_lengths that takes a list of words words as an argument.
+The function should use the map() function along with a lambda function to calculate
+the length of each word in the list. The function should return a list containing the lengths of the words.
 """
 
 
-def convert_to_uppercase(strings):
-    # Use map() with a lambda function to convert strings to uppercase
-    uppercase_strings = map(lambda word: word.upper(), strings)
+def calculate_lengths(words):
+    # Use map() with a lambda function to calculate the length of each word
+    word_lengths = map(lambda word: len(word), words)
 
-    # Return the list of uppercase strings
-    return list(uppercase_strings)
+    # Return the list of word lengths
+    return list(word_lengths)
 
 
-string = ["hello", "world", "python"]
-print(convert_to_uppercase(string))
+string = ["apple","banana","cherry","date","fig"]
+print(calculate_lengths(string))
