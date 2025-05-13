@@ -1,19 +1,19 @@
 """
-Challenge task2
+Challenge task3
 
-Create a function named calculate_lengths that takes a list of words words as an argument.
-The function should use the map() function along with a lambda function to calculate
-the length of each word in the list. The function should return a list containing the lengths of the words.
+Create a function named get_long_strings that takes a list of strings strings as an argument.
+The function should use the filter() function along with a lambda function to select strings
+that have a length greater than 5. The function should return a list containing the selected strings.
 """
 
 
-def calculate_lengths(words):
-    # Use map() with a lambda function to calculate the length of each word
-    word_lengths = map(lambda word: len(word), words)
+def get_long_strings(strings):
+    # Use filter() with a lambda function to select strings with length greater than 5
+    long_strings = filter(lambda word: len(word) > 5, strings)
 
-    # Return the list of word lengths
-    return list(word_lengths)
+    # Return the list of selected strings
+    return list(long_strings)
 
 
-string = ["apple","banana","cherry","date","fig"]
-print(calculate_lengths(string))
+string = ["apple", "banana", "cherry", "dragonfruit"]
+print(get_long_strings(string))
