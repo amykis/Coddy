@@ -1,39 +1,24 @@
 """
-Challenge task5
+Challenge task6
 
-Create a function named clean_email_list that takes a list of email addresses
-and returns a list of valid, standardized email addresses.
+Create function named process_numbers that takes a list of numbers and processes them according to specific rules.
 
 Requirements:
 
-    - Convert all emails to lowercase and strip all whitespace at the beginning or end
-
-    - Only keep emails that:
-
-        - Contain exactly one '@' symbol
-
-        - Have at least one character before the '@'
-
-        - Have at least one character after the ‘@’
-
+First filter out all negative numbers and zero
+Then for the remaining positive numbers:
+Double even numbers
+Triple odd numbers
 Use map() and filter() to solve the problem.
 """
 
 
-def clean_email_list(emails):
-    # Write your code below
-    valid_emails = []
-    for email in emails:
-        count = 0
-        for el in email:
-            if "@" in el and 0 < email.strip().lower().index("@") < len(email):
-                count += 1
-        if count == 1:
-            print(email.strip().lower())
-            valid_emails.append(email.strip().lower())
+def process_numbers(numbers):
+    cleaned = filter(lambda number: number > 0, numbers)
+    processed_numbers = map(lambda number: number * 2 if number % 2 == 0 else number * 3, cleaned)
 
-    return list(valid_emails)
+    return list(processed_numbers)
 
 
-emails = ['@nodomain.com', ' noat', ' multiple@@ats.com']
-print(clean_email_list(emails))
+numbers = [-4, 0, 5, 2, 8, -3, 7]
+print(process_numbers(numbers))
