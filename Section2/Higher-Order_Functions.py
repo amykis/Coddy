@@ -1,16 +1,39 @@
 """
-Challenge task4
+Challenge task5
 
-Create a function named get_prime_numbers that takes a list of integers numbers as an argument.
-The function should use the filter() function along with a lambda function to select prime numbers from the list.
-A prime number is a number greater than 1 that has no positive divisors other than 1 and itself.
-The function should return a list containing the selected prime numbers.
+Create a function named clean_email_list that takes a list of email addresses
+and returns a list of valid, standardized email addresses.
+
+Requirements:
+
+    - Convert all emails to lowercase and strip all whitespace at the beginning or end
+
+    - Only keep emails that:
+
+        - Contain exactly one '@' symbol
+
+        - Have at least one character before the '@'
+
+        - Have at least one character after the ‘@’
+
+Use map() and filter() to solve the problem.
 """
 
 
-def get_prime_numbers(numbers):
-    return list(filter(lambda n: n > 1 and all(n % i != 0 for i in range(2, int(n**0.5) + 1)), numbers))
+def clean_email_list(emails):
+    # Write your code below
+    valid_emails = []
+    for email in emails:
+        count = 0
+        for el in email:
+            if "@" in el and 0 < email.strip().lower().index("@") < len(email):
+                count += 1
+        if count == 1:
+            print(email.strip().lower())
+            valid_emails.append(email.strip().lower())
 
-numbers = [23, 29, 31, 32, 33, 37, 39, 41, 42, 43]
-print(get_prime_numbers(numbers))
+    return list(valid_emails)
 
+
+emails = ['@nodomain.com', ' noat', ' multiple@@ats.com']
+print(clean_email_list(emails))
